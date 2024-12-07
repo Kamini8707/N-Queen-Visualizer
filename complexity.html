@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complexity Analysis - N-Queens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #16a085;
+        }
+        pre {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #e74c3c;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complexity Analysis of N-Queens</h1>
+    <div class="content">
+        <h2>Time Complexity</h2>
+        <p>The N-Queens algorithm uses backtracking to explore all possible solutions for placing N queens on an N x N chessboard. The time complexity can be analyzed as follows:</p>
+        <ul>
+            <li>At each column, the algorithm tries to place a queen in each row, leading to a factorial number of recursive calls.</li>
+            <li>The number of recursive calls is given by:
+                <pre>T(N) = N * (N-1) * (N-2) * ... * 1 = <code>O(N!)</code></pre>
+            </li>
+            <li>Additionally, for each queen placement, validation of row, column, and diagonal conflicts takes O(N) time.</li>
+            <li>Thus, the total time complexity is:
+                <pre>T(N) = O(N!) * O(N) = <code>O(N * N!)</code></pre>
+            </li>
+        </ul>
+
+        <h3>Recurrence Relation</h3>
+        <p>The recurrence relation for this problem is:</p>
+        <pre>T(N) = N * T(N-1)</pre>
+        <p>Expanding this, we get:</p>
+        <pre>T(N) = N * (N-1) * (N-2) * ... * 1 = <code>O(N!)</code></pre>
+
+        <h2>Space Complexity</h2>
+        <p>The space complexity depends on two factors:</p>
+        <ul>
+            <li>The board representation:
+                <pre>O(N^2)</pre>
+                because the board is stored as a 2D array or a vector of strings.
+            </li>
+            <li>The recursive call stack:
+                <pre>O(N)</pre>
+                because the maximum depth of the recursion is equal to the number of columns.
+            </li>
+        </ul>
+        <p>Thus, the total space complexity is dominated by the board, resulting in:</p>
+        <pre><code>O(N^2)</code></pre>
+
+        <h2>Conclusion</h2>
+        <p>The complexities of the N-Queens algorithm are summarized as:</p>
+        <ul>
+            <li><strong>Time Complexity:</strong> <code>O(N * N!)</code></li>
+            <li><strong>Space Complexity:</strong> <code>O(N^2)</code></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code for N-Queens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0cece;
+            color: rgb(8, 8, 8);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background-color: #282828;
+            color: #f2f6f4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        a {
+            color: #070707;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2874a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Java Code for N-Queens</h1>
+    <p>The following is the Java implementation of the N-Queens problem:</p>
+    <pre>
+import java.util.*;
+class TUF {
+    public static List &lt; List &lt; String &gt; &gt; solveNQueens(int n) {
+        char[][] board = new char[n][n];
+        for (int i = 0; i &lt; n; i++)
+            for (int j = 0; j &lt; n; j++)
+                board[i][j] = '.';
+        List &lt; List &lt; String &gt; &gt; res = new ArrayList &lt; List &lt; String &gt; &gt; ();
+        dfs(0, board, res);
+        return res;
+    }
+
+    static boolean validate(char[][] board, int row, int col) {
+        int duprow = row;
+        int dupcol = col;
+        while (row &gt;= 0 && col &gt;= 0) {
+            if (board[row][col] == 'Q') return false;
+            row--;
+            col--;
+        }
+
+        row = duprow;
+        col = dupcol;
+        while (col &gt;= 0) {
+            if (board[row][col] == 'Q') return false;
+            col--;
+        }
+
+        row = duprow;
+        col = dupcol;
+        while (col &gt;= 0 && row &lt; board.length) {
+            if (board[row][col] == 'Q') return false;
+            col--;
+            row++;
+        }
+        return true;
+    }
+
+    static void dfs(int col, char[][] board, List &lt; List &lt; String &gt; &gt; res) {
+        if (col == board.length) {
+            res.add(construct(board));
+            return;
+        }
+
+        for (int row = 0; row &lt; board.length; row++) {
+            if (validate(board, row, col)) {
+                board[row][col] = 'Q';
+                dfs(col + 1, board, res);
+                board[row][col] = '.';
+            }
+        }
+    }
+
+    static List &lt; String &gt; construct(char[][] board) {
+        List &lt; String &gt; res = new LinkedList &lt; String &gt; ();
+        for (int i = 0; i &lt; board.length; i++) {
+            String s = new String(board[i]);
+            res.add(s);
+        }
+        return res;
+    }
+    public static void main(String args[]) {
+        int N = 4;
+        List &lt; List &lt; String &gt; &gt; queen = solveNQueens(N);
+        int i = 1;
+        for (List &lt; String &gt; it: queen) {
+            System.out.println("Arrangement " + i);
+            for (String s: it) {
+                System.out.println(s);
+            }
+            System.out.println();
+            i += 1;
+        }
+    }
+}
+    </pre>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>

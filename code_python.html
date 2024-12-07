@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code for N-Queens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0cece;;
+            color:  rgb(8, 8, 8);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background-color: #282828;
+            color: #f2f6f4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        a {
+            color: #070707;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2874a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Code for N-Queens</h1>
+    <p>The following is the Python implementation of the N-Queens problem:</p>
+    <pre>
+class Solution:
+    def isSafe1(self, row, col, board, n):
+        # check upper element
+        duprow = row
+        dupcol = col
+
+        while row &gt;= 0 and col &gt;= 0:
+            if board[row][col] == 'Q':
+                return False
+            row -= 1
+            col -= 1
+
+        col = dupcol
+        row = duprow
+        while col &gt;= 0:
+            if board[row][col] == 'Q':
+                return False
+            col -= 1
+
+        row = duprow
+        col = dupcol
+        while row &lt; n and col &gt;= 0:
+            if board[row][col] == 'Q':
+                return False
+            row += 1
+            col -= 1
+
+        return True
+
+    def solve(self, col, board, ans, n):
+        if col == n:
+            ans.append(list(board))
+            return
+
+        for row in range(n):
+            if self.isSafe1(row, col, board, n):
+                board[row] = board[row][:col] + 'Q' + board[row][col+1:]
+                self.solve(col+1, board, ans, n)
+                board[row] = board[row][:col] + '.' + board[row][col+1:]
+
+    def solveNQueens(self, n):
+        ans = []
+        board = ['.'*n for _ in range(n)]
+        self.solve(0, board, ans, n)
+        return ans
+
+n = 4
+obj = Solution()
+ans = obj.solveNQueens(n)
+for i in range(len(ans)):
+    print(f"Arrangement {i+1}")
+    for j in range(len(ans[0])):
+        print(ans[i][j])
+    print()
+    </pre>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>

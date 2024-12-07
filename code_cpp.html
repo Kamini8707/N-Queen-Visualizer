@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Code for N-Queens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d8b4b4;
+            color: rgb(14, 13, 13);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background-color: #282828;
+            color: #eadde5;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2874a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>C++ Code for N-Queens</h1>
+    <p>The following is the C++ implementation of the N-Queens problem:</p>
+    <pre>
+#include &lt;bits/stdc++.h&gt;
+
+using namespace std;
+class Solution {
+  public:
+    bool isSafe1(int row, int col, vector &lt; string &gt; board, int n) {
+      // check upper element
+      int duprow = row;
+      int dupcol = col;
+
+      while (row &gt;= 0 && col &gt;= 0) {
+        if (board[row][col] == 'Q')
+          return false;
+        row--;
+        col--;
+      }
+
+      col = dupcol;
+      row = duprow;
+      while (col &gt;= 0) {
+        if (board[row][col] == 'Q')
+          return false;
+        col--;
+      }
+
+      row = duprow;
+      col = dupcol;
+      while (row &lt; n && col &gt;= 0) {
+        if (board[row][col] == 'Q')
+          return false;
+        row++;
+        col--;
+      }
+      return true;
+    }
+
+  public:
+    void solve(int col, vector &lt; string &gt; & board, vector &lt; vector &lt; string &gt; &gt; & ans, int n) {
+      if (col == n) {
+        ans.push_back(board);
+        return;
+      }
+      for (int row = 0; row &lt; n; row++) {
+        if (isSafe1(row, col, board, n)) {
+          board[row][col] = 'Q';
+          solve(col + 1, board, ans, n);
+          board[row][col] = '.';
+        }
+      }
+    }
+
+  public:
+    vector &lt; vector &lt; string &gt; &gt; solveNQueens(int n) {
+      vector &lt; vector &lt; string &gt; &gt; ans;
+      vector &lt; string &gt; board(n);
+      string s(n, '.');
+      for (int i = 0; i &lt; n; i++) {
+        board[i] = s;
+      }
+      solve(0, board, ans, n);
+      return ans;
+    }
+};
+int main() {
+  int n = 4; // we are taking 4*4 grid and 4 queens
+  Solution obj;
+  vector &lt; vector &lt; string &gt; &gt; ans = obj.solveNQueens(n);
+  for (int i = 0; i &lt; ans.size(); i++) {
+    cout &lt;&lt; "Arrangement " &lt;&lt; i + 1 &lt;&lt; "\n";
+    for (int j = 0; j &lt; ans[0].size(); j++) {
+      cout &lt;&lt; ans[i][j];
+      cout &lt;&lt; endl;
+    }
+    cout &lt;&lt; endl;
+  }
+  return 0;
+}
+    </pre>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>

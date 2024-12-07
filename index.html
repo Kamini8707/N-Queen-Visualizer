@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Queens Visualiser</title>
+    
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0d0d0d;
+            padding: 15px 20px;
+            border-bottom: 2px solid #444;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        header .logo span {
+            color: #f39c12; /* Gold for the crown */
+        }
+
+        header nav {
+            position: relative;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        header nav a:hover {
+            color: #f39c12;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown .dropdown-btn {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown .arrow {
+            margin-left: 5px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(45deg);
+            transition: transform 0.2s;
+        }
+
+        .dropdown:hover .arrow {
+            transform: rotate(225deg); /* Rotates the arrow down */
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #444;
+        }
+
+        /* Main Section */
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 20px;
+        }
+
+        .main .chessboard {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .main .chessboard img {
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .main .description {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .main .description h1 {
+            font-size: 2.5rem;
+            color: #3498db; /* Blue highlight */
+        }
+
+        .main .description p {
+            margin: 15px 0;
+            color: #ccc;
+        }
+
+        .main .description a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .main .description a:hover {
+            background-color: #2874a6;
+        }
+
+        /* Sections */
+        section {
+            margin: 40px 20px;
+            padding: 20px;
+            background-color: #282828;
+            border-radius: 10px;
+        }
+
+        section h2 {
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 5px;
+        }
+
+        section p {
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #0d0d0d;
+            color: white;
+            border-top: 2px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>♛</span> N-Queen
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="visualize.html">Visualize</a>
+            <a href="explanation.html">Explanation</a>
+            <div class="dropdown">
+                <div class="dropdown-btn">
+                    Code <div class="arrow"></div>
+                </div>
+                <div class="dropdown-menu">
+                    
+                     <a href="code_c.html" target="_blank">C</a>
+                    <a href="code_cpp.html" target="_blank">C++</a>
+                     <a href="code_java.html" target="_blank">Java</a>
+                     <a href="code_python.html" target="_blank">Python</a>
+                     
+                </div>
+            </div>
+             <a href="complexity.html" target="_blank">Complexity</a>
+            
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="chessboard">
+            <img src="img.png" alt="N-Queens Chessboard">
+        </div>
+        <div class="description">
+            <h1>The N-Queens Problem</h1>
+            <p>The n-queens is the problem of placing n queens on n × n chessboard such that no two queens can attack each other. Given an integer n, return all distinct solutions to the n -queens puzzle. Each solution contains a distinct boards configuration of the queen's placement, where ‘Q’ and ‘.’ indicate queen and empty space respectively.</p>
+            <a href="visualize.html" target="_blank">Visualize ➔</a>
+
+        </div>
+    </main>
+
+    
+   
+
+    <footer>
+        &copy; 2024 N-Queen Visualiser. All Rights Reserved.
+    </footer>
+</body>
+</html>

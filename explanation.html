@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Queens Problem Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #16a085;
+        }
+        pre {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>N-Queens Problem Explanation</h1>
+    <div class="content">
+        <h2>Problem Statement</h2>
+        <p>The <span class="highlight">N-Queens Problem</span> is a classic combinatorial puzzle that requires placing N queens on an N x N chessboard such that:</p>
+        <ul>
+            <li>No two queens can attack each other.</li>
+            <li>This means:
+                <ul>
+                    <li>No two queens can share the same row.</li>
+                    <li>No two queens can share the same column.</li>
+                    <li>No two queens can share the same diagonal.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Approach</h2>
+        <p>The problem is solved using a <span class="highlight">backtracking algorithm</span>, which systematically explores all possible placements of queens on the board. The approach involves:</p>
+        <ul>
+            <li>Starting from the first column and placing a queen in a valid position.</li>
+            <li>Moving to the next column and attempting to place another queen.</li>
+            <li>Backtracking if a valid position cannot be found for a queen in a column.</li>
+        </ul>
+        <p>The solution continues until all N queens are placed on the board.</p>
+
+        <h2>Steps</h2>
+        <ol>
+            <li>Initialize an empty chessboard of size N x N.</li>
+            <li>For each column:
+                <ul>
+                    <li>Check every row for a valid position to place the queen.</li>
+                    <li>If a valid position is found, place the queen and move to the next column.</li>
+                    <li>If no valid position is found, backtrack by removing the last placed queen and trying the next position.</li>
+                </ul>
+            </li>
+            <li>Continue until all queens are placed or all possibilities are exhausted.</li>
+        </ol>
+
+        <h2>Example</h2>
+        <p>For <span class="highlight">N = 4</span>, the chessboard is 4 x 4. The algorithm explores all possible arrangements to find solutions like:</p>
+        <pre>
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+        </pre>
+
+        <h2>Key Points</h2>
+        <ul>
+            <li>The algorithm ensures no two queens are placed in the same row, column, or diagonal by using a validation function.</li>
+            <li>Backtracking ensures that invalid solutions are discarded, and only valid solutions are retained.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>The N-Queens problem demonstrates the power of backtracking in solving combinatorial problems. By systematically exploring and discarding invalid solutions, the algorithm efficiently finds all valid arrangements for placing N queens on the board.</p>
+    </div>
+</body>
+</html>

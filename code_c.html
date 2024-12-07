@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Code for N-Queens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9d4d4;
+            color: rgb(7, 7, 7);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background-color: #282828;
+            color: #2ecc71;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2874a6;
+        }
+    </style>
+</head>
+<body>
+    <h1>C Code for N-Queens</h1>
+    <p>The following is the C implementation of the N-Queens problem:</p>
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+#define N 4
+
+void printSolution(int board[N][N]) {
+    for (int i = 0; i &lt; N; i++) {
+        for (int j = 0; j &lt; N; j++) {
+            printf("%c ", board[i][j] ? 'Q' : '.');
+        }
+        printf("\\n");
+    }
+    printf("\\n");
+}
+
+bool isSafe(int board[N][N], int row, int col) {
+    for (int i = 0; i &lt; col; i++)
+        if (board[row][i])
+            return false;
+
+    for (int i = row, j = col; i &gt;= 0 && j &gt;= 0; i--, j--)
+        if (board[i][j])
+            return false;
+
+    for (int i = row, j = col; i &lt; N && j &gt;= 0; i++, j--)
+        if (board[i][j])
+            return false;
+
+    return true;
+}
+
+bool solveNQueensUtil(int board[N][N], int col) {
+    if (col &gt;= N) {
+        printSolution(board);
+        return true;
+    }
+
+    bool res = false;
+    for (int i = 0; i &lt; N; i++) {
+        if (isSafe(board, i, col)) {
+            board[i][col] = 1;
+            res = solveNQueensUtil(board, col + 1) || res;
+            board[i][col] = 0;
+        }
+    }
+
+    return res;
+}
+
+void solveNQueens() {
+    int board[N][N] = {0};
+    if (!solveNQueensUtil(board, 0)) {
+        printf("Solution does not exist\\n");
+    }
+}
+
+int main() {
+    solveNQueens();
+    return 0;
+}
+    </pre>
+    <a href="index.html">Back to Home</a>
+</body>
+</html>
